@@ -1,6 +1,7 @@
 package com.example.siem.stappenteller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private SensorManager sensorManager;
     private TextView stepCounter;
+    private Button stepList;
     public boolean step;
 
     @Override
@@ -30,7 +33,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setSupportActionBar(toolbar);
 
         stepCounter = (TextView) findViewById(R.id.stepCounter);
+        stepList = (Button) findViewById(R.id.list);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        stepList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), DailyTracker.class);
+                startActivity(intent);
+            }
+        });
     }
 
     protected void onResume(){

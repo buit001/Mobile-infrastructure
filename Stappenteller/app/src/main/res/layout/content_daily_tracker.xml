@@ -9,23 +9,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.siem.stappenteller.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context="com.example.siem.stappenteller.DailyTracker"
+    tools:showIn="@layout/activity_daily_tracker">
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/stepCounter"
-        android:gravity="center"
-        android:layout_centerInParent="true"
-        android:textSize="50dp"
-        android:text="Start walking" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/list"
-        android:text="view step list"
-        />
-
+        android:id="@+id/stepList"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
