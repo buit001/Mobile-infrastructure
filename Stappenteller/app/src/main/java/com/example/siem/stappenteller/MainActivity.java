@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), DailyTracker.class);
+                intent.putExtra("stepCounter", Math.round(Float.parseFloat(stepCounter.getText().toString())));
                 startActivity(intent);
             }
         });
