@@ -1,0 +1,16 @@
+c:\users\tan\documents\visual studio 2015\Projects\RestfulWebAPI\WebDatabase\bin\Debug\WebDatabase.dll.config
+c:\users\tan\documents\visual studio 2015\Projects\RestfulWebAPI\WebDatabase\bin\Debug\WebDatabase.dll
+c:\users\tan\documents\visual studio 2015\Projects\RestfulWebAPI\WebDatabase\bin\Debug\WebDatabase.pdb
+c:\users\tan\documents\visual studio 2015\Projects\RestfulWebAPI\WebDatabase\bin\Debug\EntityFramework.dll
+c:\users\tan\documents\visual studio 2015\Projects\RestfulWebAPI\WebDatabase\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\tan\documents\visual studio 2015\Projects\RestfulWebAPI\WebDatabase\bin\Debug\MySql.Data.dll
+c:\users\tan\documents\visual studio 2015\Projects\RestfulWebAPI\WebDatabase\bin\Debug\MySql.Data.Entity.EF6.dll
+c:\users\tan\documents\visual studio 2015\Projects\RestfulWebAPI\WebDatabase\bin\Debug\EntityFramework.xml
+c:\users\tan\documents\visual studio 2015\Projects\RestfulWebAPI\WebDatabase\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\tan\documents\visual studio 2015\Projects\RestfulWebAPI\WebDatabase\obj\Debug\WebDatabase.csprojResolveAssemblyReference.cache
+c:\users\tan\documents\visual studio 2015\Projects\RestfulWebAPI\WebDatabase\obj\Debug\WebDatabase.dll
+c:\users\tan\documents\visual studio 2015\Projects\RestfulWebAPI\WebDatabase\obj\Debug\WebDatabase.pdb
+C:\Users\Tan\Documents\Visual Studio 2015\Projects\RestfulWebAPI\WebDatabase\bin\Debug\MySql.Web.dll
+C:\Users\Tan\Documents\Visual Studio 2015\Projects\RestfulWebAPI\WebDatabase\bin\Debug\EntityFramework.SqlServerCompact.dll
+C:\Users\Tan\Documents\Visual Studio 2015\Projects\RestfulWebAPI\WebDatabase\bin\Debug\System.Data.SqlServerCe.dll
+C:\Users\Tan\Documents\Visual Studio 2015\Projects\RestfulWebAPI\WebDatabase\bin\Debug\EntityFramework.SqlServerCompact.xml
