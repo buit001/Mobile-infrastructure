@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         postSteps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             onPost(null, null);
+             onPost(stepCounter.getText().toString(), null);
+                System.out.println(stepCounter.getText().toString());
             }
         });
     }
