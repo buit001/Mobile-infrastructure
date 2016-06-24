@@ -1,20 +1,20 @@
 package com.example.siem.stappenteller;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,6 +27,7 @@ public class DailyTracker extends Activity{
 
     private List<StapTracker> steps;
     private StepsAdapter adapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class DailyTracker extends Activity{
         adapter = new StepsAdapter(getApplicationContext(), R.layout.row_steps, steps);
 
         listView = (ListView) findViewById(R.id.stepList);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         listView.setAdapter(adapter);
 
         Intent intent = getIntent();
@@ -44,11 +46,74 @@ public class DailyTracker extends Activity{
         int stepsNumber = intent.getIntExtra("stepCounter", 0);
         String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 
-        steps.add(new StapTracker(stepsNumber, "25-05-2016"));
-        steps.add(new StapTracker(5, "25-05-2016"));
-        steps.add(new StapTracker(500, "24-05-2016"));
+        //swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        swipeRefreshLayout.setRefreshing(true);
 
-        adapter.notifyDataSetChanged();
+                                        loadChildren();
+                                    }
+                                }
+        );
+        loadChildren();
+
+    }
+
+
+    protected void loadChildren() {
+        String url = getString(R.string.API_GetStappen);
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            steps.clear();
+
+                            JSONArray jsonArray = response.getJSONArray("Content");
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject stepObject = jsonArray.getJSONObject(i);
+                                String stappen = stepObject.getString("FirstName");
+                                String dag = stepObject.getString("LastName");
+
+                                steps.add(new StapTracker(stappen, dag));
+                            }
+
+                            adapter.notifyDataSetChanged();
+                            Log.println(Log.DEBUG, "HTTPLOG", response.toString());
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+
+                        // stopping swipe refresh
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.println(Log.DEBUG, "JSON", error.toString());
+                        Toast.makeText(getApplicationContext(), "failed to load steps", Toast.LENGTH_SHORT).show();
+                        error.printStackTrace();
+
+                        // stopping swipe refresh
+                        swipeRefreshLayout.setRefreshing(false);
+
+                    }
+                });
+
+        // Access the RequestQueue through your singleton class.
+        NetworkManager.getInstance(this).addToRequestQueue(jsObjRequest);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadChildren();
     }
 
 

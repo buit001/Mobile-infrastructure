@@ -4,19 +4,19 @@ package com.example.siem.stappenteller;
  * Created by siem on 25-5-2016.
  */
 public class StapTracker {
-    private int steps;
+    private String steps;
     private String date;
 
-    public StapTracker(int steps, String date){
+    public StapTracker(String steps, String date){
         this.steps = steps;
         this.date = date;
     }
 
-    public int getSteps(){
+    public String getSteps(){
         return steps;
     }
 
-    public void setSteps(int steps){
+    public void setSteps(String steps){
         this.steps = steps;
     }
 
