@@ -13,20 +13,16 @@ namespace RestfulWebAPI.Controllers
     [RoutePrefix("api/Stappen")]
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
         [HttpGet, Route("GetValues")]
+        // GET api/GetValues
         public dynamic GetValues()
         {
             return GetStappenHistory();
         }
 
         [HttpPost, Route("PostValues"), ResponseType(typeof(AddStepsMessage))]
-        // POST api/values
+        // POST api/PostValues
         public dynamic Post([FromBody] StappenModel stappenModel)
         {
             if (ModelState.IsValid)

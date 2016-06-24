@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="StappenTellerApi" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\siem\\Documents\\Mobile-infrastructure\\RestfulWebAPI\\RestfulWebAPI\\RestfulWebAPI\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\siem\\Documents\\Mobile-infrastructure\\RestfulWebAPI\\RestfulWebAPI\\RestfulWebAPI\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="server=eu-cdbr-azure-west-d.cloudapp.net;user id=b39b7bb59acd54;password=626a2136;persistsecurityinfo=True;database=stappenTellerDatabase" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\siem\\Documents\\Mobile-infrastructure\\RestfulWebAPI\\RestfulWebAPI\\RestfulWebAPI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="WebDatabase.Model1-Web.config Connection String" description="" value="WebDatabase.Model1_ConnectionString" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\siem\\Documents\\Mobile-infrastructure\\RestfulWebAPI\\RestfulWebAPI\\RestfulWebAPI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='WebDatabase.Model1']/@connectionString" />
+  </parameter>
+</parameters>
