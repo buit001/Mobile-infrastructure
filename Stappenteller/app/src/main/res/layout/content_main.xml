@@ -28,4 +28,11 @@
         android:text="view step list"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/postSteps"
+        android:text="Send Steps"
+        android:layout_below="@+id/list"/>
+
 </RelativeLayout>

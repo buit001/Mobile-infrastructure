@@ -9,8 +9,6 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +21,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -34,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager sensorManager;
     private TextView stepCounter;
     private Button stepList;
+    private Button postSteps;
     public boolean step;
     Map<Object, Object> params;
 
@@ -46,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         stepCounter = (TextView) findViewById(R.id.stepCounter);
         stepList = (Button) findViewById(R.id.list);
+        postSteps = (Button) findViewById(R.id.postSteps);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         stepList.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +53,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 Intent intent = new Intent(getApplicationContext(), DailyTracker.class);
                 intent.putExtra("stepCounter", Math.round(Float.parseFloat(stepCounter.getText().toString())));
                 startActivity(intent);
+            }
+        });
+
+        postSteps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+             onPost(null, null);
             }
         });
     }
@@ -111,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return params;
     }
 
-    protected void onLoginEvent(String stappen, String dag) {
+    protected void onPost(String stappen, String dag) {
 
 
             String url = getString(R.string.API_PostStappen);
