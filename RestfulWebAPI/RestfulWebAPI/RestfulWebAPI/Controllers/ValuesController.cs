@@ -18,7 +18,14 @@ namespace RestfulWebAPI.Controllers
         // GET api/GetValues
         public dynamic GetValues()
         {
-            return GetStappenHistory();
+            try {
+                return GetStappenHistory();
+            }
+            catch(Exception e)
+            {
+                return e.Message;
+            }
+
         }
 
         [HttpPost, Route("PostValues"), ResponseType(typeof(AddStepsMessage))]
@@ -38,26 +45,26 @@ namespace RestfulWebAPI.Controllers
 
         public static StappenListModel GetStappenHistory()
         {
-            using (var db = new Model1())
-            {
-                StappenListModel StappenModel = new StappenListModel();
-                List<StappenModel> myStappen = new List<StappenModel>();
+                using (var db = new Model1())
+                {
+                    StappenListModel StappenModel = new StappenListModel();
+                    List<StappenModel> myStappen = new List<StappenModel>();
                 var query = from s in db.stappen
                             select s;
                 foreach (var item in query)
-                {
-                    myStappen.Add(new StappenModel()
                     {
-                        IdStappen = item.idStappen,
-                        AantalStappen = item.aantalStappen,
-                        Dag = item.dag
+                        myStappen.Add(new StappenModel()
+                        {
+                            IdStappen = item.idStappen,
+                            AantalStappen = item.aantalStappen,
+                            Dag = item.dag
 
-                    });
+                        });
+                    }
+                    StappenModel.stappenModel = myStappen;
+                    return StappenModel;
                 }
-                StappenModel.stappenModel = myStappen;
-                return StappenModel;
             }
-        }
 
         public static AddStepsMessage AddSteps(int id, string stappen, string day)
         {
