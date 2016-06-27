@@ -85,7 +85,6 @@ public class DailyTracker extends Activity{
                             }
 
                             adapter.notifyDataSetChanged();
-                            Log.println(Log.DEBUG, "HTTPLOG", response.toString());
 
                         } catch (Exception e) {
                             e.printStackTrace();

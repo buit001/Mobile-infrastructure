@@ -24,6 +24,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Button stepList;
     private Button postSteps;
     public boolean step;
+    public String day;
     Map<Object, Object> params;
 
     @Override
@@ -48,6 +51,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         postSteps = (Button) findViewById(R.id.postSteps);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time =&gt; "+c.getTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        day = df.format(c.getTime());
+        Toast.makeText(this, day, Toast.LENGTH_SHORT).show();
+
+        Log.println(Log.DEBUG, "HTTPLOG", day);
+
         stepList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         postSteps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             onPost(stepCounter.getText().toString(), null);
+             onPost(stepCounter.getText().toString(), day);
                 System.out.println(stepCounter.getText().toString());
             }
         });
@@ -76,6 +88,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         else{
             Toast.makeText(this, "Step sensor not available", Toast.LENGTH_LONG).show();
         }
+
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time =&gt; "+c.getTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        day = df.format(c.getTime());
+        Toast.makeText(this, day, Toast.LENGTH_SHORT).show();
     }
 
     protected void onPause(){
@@ -125,8 +144,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             String url = getString(R.string.API_PostStappen);
 
             params = new HashMap<Object, Object>();
-            params.put("stappen", stappen);
-            params.put("dag", dag);
+            params.put("AantalStappen", stappen);
+            params.put("Dag", dag);
 
             final JSONObject jsonObject = new JSONObject(params);
 
