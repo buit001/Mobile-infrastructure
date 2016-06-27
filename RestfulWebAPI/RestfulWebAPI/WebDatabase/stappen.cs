@@ -10,7 +10,7 @@ namespace WebDatabase
     public partial class stappen
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public int idStappen { get; set; }
 
         [StringLength(45)]

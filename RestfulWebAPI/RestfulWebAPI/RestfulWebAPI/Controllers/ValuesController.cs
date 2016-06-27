@@ -34,7 +34,7 @@ namespace RestfulWebAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                return Ok(AddSteps(stappenModel.IdStappen, stappenModel.AantalStappen, stappenModel.Dag));
+                return Ok(AddSteps(stappenModel.AantalStappen, stappenModel.Dag));
             }
             else
             {
@@ -55,7 +55,6 @@ namespace RestfulWebAPI.Controllers
                     {
                         myStappen.Add(new StappenModel()
                         {
-                            IdStappen = item.idStappen,
                             AantalStappen = item.aantalStappen,
                             Dag = item.dag
 
@@ -66,18 +65,19 @@ namespace RestfulWebAPI.Controllers
                 }
             }
 
-        public static AddStepsMessage AddSteps(int id, string stappen, string day)
+        public static AddStepsMessage AddSteps(string stappen, string day)
         {
             try
             {
                 using (var db = new Model1())
                 {
-                    var mySteps = db.stappen.FirstOrDefault(i => i.idStappen == id);
-                    db.stappen.Add(new stappen()
+                    stappen stappenModel = new stappen()
                     {
                         aantalStappen = stappen,
-                        dag = day                        
-                    });
+                        dag = day
+                    };
+
+                    db.stappen.Add(stappenModel);
                     db.SaveChanges();
 
                     return new AddStepsMessage()
@@ -91,7 +91,7 @@ namespace RestfulWebAPI.Controllers
                 return new AddStepsMessage()
                 {
                     Succesfull = false,
-                    Message = e.Message
+                    Message = e.Message + " " + e.InnerException.ToString()
                 };
             }
         }

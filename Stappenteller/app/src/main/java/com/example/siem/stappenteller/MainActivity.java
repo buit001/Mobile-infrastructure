@@ -9,6 +9,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -138,6 +139,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                             if (response.toString().contains("true")) {
                                 Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
                             }
+                            else{
+                                Toast.makeText(getApplicationContext(), "failed", Toast.LENGTH_SHORT).show();
+                                Log.println(Log.DEBUG, "HTTPLOG", response.toString());
+                            }
+
 
                             }
 
