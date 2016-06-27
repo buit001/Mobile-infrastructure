@@ -90,3 +90,5 @@ C:\Users\siem\Documents\Mobile-infrastructure\RestfulWebAPI\RestfulWebAPI\Restfu
 C:\Users\siem\Documents\Mobile-infrastructure\RestfulWebAPI\RestfulWebAPI\RestfulWebAPI\obj\Release\RestfulWebAPI.csprojResolveAssemblyReference.cache
 C:\Users\siem\Documents\Mobile-infrastructure\RestfulWebAPI\RestfulWebAPI\RestfulWebAPI\obj\Release\RestfulWebAPI.dll
 C:\Users\siem\Documents\Mobile-infrastructure\RestfulWebAPI\RestfulWebAPI\RestfulWebAPI\obj\Release\RestfulWebAPI.pdb
+C:\Users\siem\Documents\Mobile-infrastructure\RestfulWebAPI\RestfulWebAPI\RestfulWebAPI\bin\MySql.Data.dll
+C:\Users\siem\Documents\Mobile-infrastructure\RestfulWebAPI\RestfulWebAPI\RestfulWebAPI\bin\mysql.data.entity.EF6.dll

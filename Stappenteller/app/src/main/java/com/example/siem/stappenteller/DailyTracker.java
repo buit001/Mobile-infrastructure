@@ -74,12 +74,12 @@ public class DailyTracker extends Activity{
                         try {
                             steps.clear();
 
-                            JSONArray jsonArray = response.getJSONArray("Content");
+                            JSONArray jsonArray = response.getJSONArray("stappenModel");
 
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject stepObject = jsonArray.getJSONObject(i);
-                                String stappen = stepObject.getString("FirstName");
-                                String dag = stepObject.getString("LastName");
+                                String stappen = stepObject.getString("AantalStappen");
+                                String dag = stepObject.getString("Dag");
 
                                 steps.add(new StapTracker(stappen, dag));
                             }

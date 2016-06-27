@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="stappenTellerDatabase-Web.config Connection String" description="stappenTellerDatabase Connection String used in web.config by the application to access the database." defaultValue="Database=stappenTellerDatabase;Data Source=eu-cdbr-azure-west-d.cloudapp.net;User Id=b39b7bb59acd54;Password=626a2136;Trusted_Connection=False;Persist Security Info=True" tags="SqlConnectionString">
+  <parameter name="stappenTellerDatabase-Web.config Connection String" description="stappenTellerDatabase Connection String used in web.config by the application to access the database." defaultValue="Database=stappenTellerDatabase;Data Source=eu-cdbr-azure-west-d.cloudapp.net;User Id=b39b7bb59acd54;Password=626a2136;Persist Security Info=True" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\siem\\Documents\\Mobile-infrastructure\\RestfulWebAPI\\RestfulWebAPI\\RestfulWebAPI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='stappenTellerDatabase']/@connectionString" />
   </parameter>
   <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="DefaultConnection_ConnectionString" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\siem\\Documents\\Mobile-infrastructure\\RestfulWebAPI\\RestfulWebAPI\\RestfulWebAPI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-  <parameter name="WebDatabase.Model1-Web.config Connection String" description="WebDatabase.Model1 Connection String used in web.config by the application to access the database." defaultValue="WebDatabase.Model1_ConnectionString" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\siem\\Documents\\Mobile-infrastructure\\RestfulWebAPI\\RestfulWebAPI\\RestfulWebAPI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='WebDatabase.Model1']/@connectionString" />
   </parameter>
 </parameters>
